@@ -1,11 +1,11 @@
-import { ICategoriesRepository } from "../repositories/ICategoriesReporitory"
+import { ICategoriesRepository } from "../../repositories/ICategoriesReporitory"
 
 interface IRequest {
   name: string
   description: string
 }
 
-export class CreateCategoryService {
+export class CreateCategoryUseCase {
   constructor(private categoryRepository: ICategoriesRepository) {}
 
   execute({ name, description }: IRequest): void {
@@ -18,5 +18,4 @@ export class CreateCategoryService {
 
     this.categoryRepository.create({ name, description })
   }
-
 }
