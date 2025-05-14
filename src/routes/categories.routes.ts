@@ -3,7 +3,6 @@ import { Router } from "express";
 import { CategoriesRepository } from "../modules/cars/repositories/CategoriesRepository";
 import { createCategoryController } from "../modules/cars/useCases/createCategory";
 
-// Parei no #F041
 const categoriesRoutes = Router()
 const categoryRepository = new CategoriesRepository()
 
