@@ -1,11 +1,21 @@
 import { Specification } from "../models/Specification";
-import { ISpecification, ISpecificationsRepository } from "./ISpecificationRepository";
+import { ISpecification, ISpecificationsRepository } from "./implementations/ISpecificationRepository";
 
 export class SpecificationRepository implements ISpecificationsRepository {
   private specifications: ISpecification[]
-  
+
+  private static instance: SpecificationRepository
+
   constructor() {
     this.specifications = []
+  }
+
+  public static getInstance(): SpecificationRepository {
+    if (!SpecificationRepository.instance) {
+      SpecificationRepository.instance = new SpecificationRepository()
+    }
+
+    return SpecificationRepository.instance
   }
   
   create({ name, description }: ISpecification): void {
