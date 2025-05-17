@@ -1,4 +1,18 @@
 services:
+  database_rentx:
+    image: postgres:14-alpine
+    container_name: rentx_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: rentx
+    ports:
+      - "5432:5432"
+    volumes:
+      - rentx_postgres_data:/var/lib/postgresql/data
+    networks:
+      - rentx_network
+  
   app:
     build: .
     container_name: rentx
@@ -6,4 +20,16 @@ services:
       - "3333:3333"
     volumes:
       - .:/usr/app
-    
+    depends_on:
+      - database_rentx
+    networks:
+      - rentx_network
+
+networks:
+  rentx_network:
+    driver: bridge
+
+volumes:
+  rentx_postgres_data:
+    driver: local
+
