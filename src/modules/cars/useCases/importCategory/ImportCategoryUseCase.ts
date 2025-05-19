@@ -1,3 +1,5 @@
+import { inject, injectable } from "tsyringe";
+
 import { parse } from 'csv-parse';
 import fs from 'fs';
 import { Multer } from "multer";
@@ -8,8 +10,11 @@ interface IImportCategory {
   description: string;
 }
 
+@injectable()
 export class ImportCategoryUseCase {
-  constructor(private categoriesRepository: CategoriesRepository) {}
+  constructor(
+    @inject("CategoriesRepository")
+    private categoriesRepository: CategoriesRepository) {}
 
   loadCategories(file: Multer.File): Promise<IImportCategory[]> {
     return new Promise((resolve, reject) => {
