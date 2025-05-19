@@ -4,6 +4,6 @@ export interface ISpecification {
 }
 
 export interface ISpecificationsRepository {
-  findByName(name: string): ISpecification
-  create({ name, description }: ISpecification): void
+  findByName(name: string): Promise<ISpecification>
+  create({ name, description }: ISpecification): Promise<void>
 }
