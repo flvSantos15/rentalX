@@ -1,9 +1,9 @@
 import { Router } from "express";
 import multer from "multer";
 
-import { CreateCategoryController } from "../modules/cars/useCases/createCategory/CreateCategoryController";
-import { ImportCategoryController } from "../modules/cars/useCases/importCategory/ImportCategoryController";
-import { ListCategoriesController } from "../modules/cars/useCases/listCategories/ListCategoriesController";
+import { CreateCategoryController } from "@modules/cars/useCases/createCategory/CreateCategoryController";
+import { ImportCategoryController } from "@modules/cars/useCases/importCategory/ImportCategoryController";
+import { ListCategoriesController } from "@modules/cars/useCases/listCategories/ListCategoriesController";
 
 const categoriesRoutes = Router();
 
@@ -19,10 +19,10 @@ categoriesRoutes.post("/", createCategoryController.handle);
 // @ts-ignore
 categoriesRoutes.get("/", listCategoriesController.handle);
 
-// @ts-ignore
 categoriesRoutes.post(
   "/import",
   upload.single("file"),
+  // @ts-ignore
   importCategoryController.handle,
 );
 
