@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
-import { CategoriesRepository } from "@modules/cars/repositories/implementations/CategoriesRepository";
+import { CategoriesRepository } from "@modules/cars/infra/typeorm/repositories/CategoriesRepository";
 import { parse } from "csv-parse";
 import fs from "fs";
 
